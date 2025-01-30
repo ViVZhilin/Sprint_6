@@ -1,50 +1,29 @@
+from pages.base_page import BasePage
 from locators.main_page_locators import MainPageLocators
+import allure
 
-
-class MainPage:
-    status_order_button = [*MainPageLocators.order_status_button]
-    header_order_button = [*MainPageLocators.header_order_button]
-    footer_order_button = [*MainPageLocators.footer_order_button]
-    question_1_text = [*MainPageLocators.question_1]
-    question_2_text = [*MainPageLocators.question_2]
-    question_3_text = [*MainPageLocators.question_3]
-    question_4_text = [*MainPageLocators.question_4]
-    question_5_text = [*MainPageLocators.question_5]
-    question_6_text = [*MainPageLocators.question_6]
-    question_7_text = [*MainPageLocators.question_7]
-    question_8_text = [*MainPageLocators.question_8]
-
+class MainPage(BasePage):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
 
+    @allure.step('Нажимаем на кнопку заказа в хедере')
     def click_header_order_button(self):
-        self.driver.find_element(*self.header_order_button).click()
+        self.click_element(MainPageLocators.header_order_button)
 
+    @allure.step('Нажимаем на кнопку заказа в футере')
     def click_footer_order_button(self):
-        self.driver.find_element(*self.footer_order_button).click()
+        self.scroll_to_element(self.driver.find_element(*MainPageLocators.footer_order_button))
+        self.click_element(MainPageLocators.footer_order_button)
 
-    def click_on_first_question_button(self):
-        self.driver.find_element(*self.question_1_text).click()
+    @allure.step('Нажимаем на вопрос')
+    def click_question(self, question_locator):
+        self.scroll_to_element(self.driver.find_element(*question_locator))
+        self.click_element(question_locator)
 
-    def click_on_second_question_button(self):
-        self.driver.find_element(*self.question_2_text).click()
+    @allure.step('Получаем текст ответа')
+    def get_answer_text(self, answer_locator):
+        return self.get_element_text(answer_locator)
 
-    def click_on_third_question_button(self):
-        self.driver.find_element(*self.question_3_text).click()
-
-    def click_on_fourth_question_button(self):
-        self.driver.find_element(*self.question_4_text).click()
-
-    def click_on_fifth_question_button(self):
-        self.driver.find_element(*self.question_5_text).click()
-
-    def click_on_sixth_question_button(self):
-        self.driver.find_element(*self.question_6_text).click()
-
-    def click_on_seventh_question_button(self):
-        self.driver.find_element(*self.question_7_text).click()
-
-    def click_on_eighth_question_button(self):
-        self.driver.find_element(*self.question_8_text).click()
-
-
+    @allure.step('Нажимаем на лого')
+    def click_on_logo(self):
+        self.click_element(MainPageLocators.main_logo)

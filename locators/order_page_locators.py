@@ -6,10 +6,8 @@ class OrderPageLocators:
     address_field = [By.XPATH, ".//input[@placeholder = '* Адрес: куда привезти заказ']"]
     metro_station_field = [By.XPATH, ".//input[@placeholder = '* Станция метро']"]
     phone_number_field = [By.XPATH, ".//input[@placeholder = '* Телефон: на него позвонит курьер']"]
-    #next_button = [By.CLASS_NAME, "Button_Button__ra12g Button_Middle__1CSJM"]
     next_button = [By.XPATH, ".//button[@class = 'Button_Button__ra12g Button_Middle__1CSJM']"]
     date_field = [By.XPATH, ".//input[@placeholder = '* Когда привезти самокат']"]
-    #datepicker = [By.CLASS_NAME, ".//input[@placeholder = 'react-datepicker__date react-datepicker__day--008']"]
     datepicker = [By.XPATH, ".//input[@placeholder = '* Когда привезти самокат']"]
     datepicker_select = [By.XPATH, ".//div[@class = 'react-datepicker__day react-datepicker__day--008']"]
 
