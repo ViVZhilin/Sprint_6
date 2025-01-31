@@ -40,7 +40,7 @@ class OrderPage(BasePage):
     @allure.step('Выбираем продолжительность аренды')
     def select_rent_duration(self):
         self.click_element(OrderPageLocators.rent_time)
-        self.driver.find_element(By.XPATH, ".//div[@class='Dropdown-option']").click()
+        self.click_element(OrderPageLocators.rent_period)
 
     @allure.step('Выбираем цвет самоката')
     def select_scooter_color(self):

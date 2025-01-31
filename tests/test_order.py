@@ -15,7 +15,7 @@ class TestOrder:
         base_page = BasePage(driver)
 
         main_page.open_site(Data.url)
-        main_page.accept_cookies(MainPageLocators.cookie_button)
+        base_page.accept_cookies()
         main_page.click_header_order_button()
 
         order_page.enter_first_name(Data.first_name)
@@ -32,8 +32,8 @@ class TestOrder:
         order_page.confirm_order()
 
         assert order_page.check_order_status() != ''
-        main_page.click_logo(MainPageLocators.main_logo)
-        main_page.check_current_url(Data.url)
+        main_page.click_on_logo()  # Используем метод страницы без передачи локатора
+        base_page.check_current_url()  # Проверка URL через метод страницы
 
 
 
@@ -41,6 +41,7 @@ class TestOrder:
     def test_create_order_from_footer(self, driver):
         main_page = MainPage(driver)
         order_page = OrderPage(driver)
+        base_page = BasePage(driver)
 
         main_page.open_site(Data.url)
         main_page.click_footer_order_button()
@@ -59,5 +60,5 @@ class TestOrder:
         order_page.confirm_order()
 
         assert order_page.check_order_status() != ''
-        main_page.click_logo(MainPageLocators.main_logo)
-        main_page.check_current_url(Data.url)
+        main_page.click_on_logo()  # Используем метод страницы без передачи локатора
+        base_page.check_current_url()  # Проверка URL через метод страницы

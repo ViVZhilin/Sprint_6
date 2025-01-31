@@ -28,4 +28,5 @@ class OrderPageLocators:
 
     decline_confirmation_button = [By.LINK_TEXT, "Нет"]
     accept_confirmation_button = [By.XPATH, ".//div[@class = 'Order_Modal__YZ-d3']/div[@class = 'Order_Buttons__1xGrp']/button[@class = 'Button_Button__ra12g Button_Middle__1CSJM']"]
+    rent_period = [By.XPATH, ".//div[@class='Dropdown-option']"]
 
